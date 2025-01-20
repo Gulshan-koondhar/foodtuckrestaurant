@@ -12,11 +12,12 @@ interface Iproduct {
   imageUrl: string;
   price: number;
   originalPrice: number;
+  _id: string;
 }
 
 const ProductDetail = async ({ slug }: { slug: string }) => {
   const query = `*[_type == "food" && slug.current == "${slug}"][0]{
-    name,description,category,price, originalPrice,
+    name,description,category,price, originalPrice,_id,
       "imageUrl":image.asset->url
   }`;
   const data: Iproduct = await client.fetch(query);
@@ -35,6 +36,8 @@ const ProductDetail = async ({ slug }: { slug: string }) => {
             name={data.name}
             price={data.price}
             originalPrice={data.originalPrice}
+            image={data.imageUrl}
+            id={data._id}
           />
         </div>
       </div>

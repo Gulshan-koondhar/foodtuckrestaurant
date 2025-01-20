@@ -7,6 +7,9 @@ const nextConfig: NextConfig = {
       {
         hostname: "cdn.sanity.io",
       },
+      {
+        hostname: "fakestoreapi.com",
+      },
     ],
   },
 };

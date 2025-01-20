@@ -6,9 +6,11 @@ import { Menu, ShoppingBag, UserRound } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Profile from "./Profile";
 import Navbar from "./Navbar";
+import { useCart } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const Header = () => {
+  const { cart } = useCart();
   const pathname = usePathname();
   const [profileActive, setProfileActive] = useState(false);
   const handleProfile = () => {
@@ -44,11 +46,14 @@ const Header = () => {
           <Link
             className={`hover:text-[#FF9F0D] ${
               pathname === "/cart" ? "active" : ""
-            } ${inter.className}`}
+            } ${inter.className} relative`}
             href="/cart"
           >
             <ShoppingBag />
           </Link>
+          <div className="absolute bg-red-500 w-5 h-5 text-center rounded-full left-9 -top-2">
+            {cart.length}
+          </div>
           <Menu onClick={hanldeMenu} />
           {showMenu ? (
             <div className="absolute top-14 right-0  z-30 bg-black bg-opacity-90 px-8 py-4 border rounded-md">

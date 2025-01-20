@@ -5,7 +5,9 @@ import { Menu, ShoppingBag } from "lucide-react";
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import SearchForm from "./Search";
+import { useCart } from "@/context/CartContext";
 const HomeHeader = () => {
+  const { cart } = useCart();
   const [showMenu, setShowMenu] = useState(false);
   const hanldeMenu = () => {
     setShowMenu(!showMenu);
@@ -18,7 +20,7 @@ const HomeHeader = () => {
           Food<span className="text-[#FF9F0D]">tuck</span>
         </div>
         {/* Mobile */}
-        <div className="flex items-center gap-2 flex-row-reverse md:hidden">
+        <div className="flex items-center gap-2 flex-row-reverse md:hidden relative">
           <Menu onClick={hanldeMenu} />
           {showMenu ? (
             <div className="absolute top-24 bg-black bg-opacity-90 px-8 py-4 border rounded-md">
@@ -28,14 +30,20 @@ const HomeHeader = () => {
             ""
           )}
           <ShoppingBag />
+          <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 left-3">
+            {cart.length}
+          </div>
         </div>
       </div>
       {/* Large Devices */}
       <div className="flex items-center justify-between">
         <Navbar classname="hidden md:flex space-x-6" />
-        <div className="lg:flex gap-2 items-center hidden">
+        <div className="lg:flex gap-2 items-center hidden relative">
           <SearchForm />
           <ShoppingBag />
+          <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 -right-1">
+            {cart.length}
+          </div>
         </div>
       </div>
     </div>

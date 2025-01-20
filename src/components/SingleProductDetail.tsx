@@ -1,3 +1,4 @@
+"use client";
 import {
   Facebook,
   Instagram,
@@ -9,22 +10,30 @@ import { Inter } from "next/font/google";
 import Image from "next/image";
 import React from "react";
 import rating from "../../public/Rating.png";
-import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const SingleProductDetail = ({
+  id,
   name,
   desc,
   price,
   originalPrice,
+  image,
   category,
 }: {
+  id: string;
   name: string;
   desc: string;
   price: number;
   originalPrice: number;
   category: string;
+  image: string;
 }) => {
+  const { addToCart } = useCart();
+  const handleAddtoCart = () => {
+    addToCart({ name, price, image, quantity: 1, id });
+  };
   return (
     <div className="flex flex-col gap-4">
       <div className="flex justify-between">
@@ -68,12 +77,12 @@ const SingleProductDetail = ({
             </div>
           </div>
           <div>
-            <Link
-              href="/checkout"
+            <button
               className="flex gap-1 bg-[#FF9F0D] px-4 py-2 text-white"
+              onClick={handleAddtoCart}
             >
               <ShoppingBag /> Add to Cart
-            </Link>
+            </button>
           </div>
         </div>
       </div>
