@@ -5,7 +5,7 @@ import React from "react";
 import banner from "../../../../public/unsplash_4ycv3Ky1ZZU.png";
 import ProductDetail from "@/components/ProductDetail";
 
-const page = async ({ params }: { params: { slug: string } }) => {
+const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params;
   return (
     <main>

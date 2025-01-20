@@ -10,7 +10,7 @@ const SearchForm = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (query.trim()) {
-      router.push(`/search/${query}`);
+      router.push(`/${query}`);
     }
   };
 
