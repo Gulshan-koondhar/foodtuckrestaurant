@@ -26,11 +26,19 @@ const Testimonials = ({ classname }: { classname: string }) => {
               alt=""
               width={50}
               height={40}
+              loading="lazy"
               className="rounded-full absolute -top-7 right-24 md:right-80 lg:right-[360px]"
             />
           </div>
           <div className="flex flex-col gap-10 items-center justify-center">
-            <Image src={quotes} alt="" width={30} height={30} className="" />
+            <Image
+              src={quotes}
+              alt=""
+              width={30}
+              height={30}
+              className=""
+              loading="lazy"
+            />
             <p className="text-[#4F4F4F] font-helvetica text-lg font-normal">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. A ipsam
               rerum ipsa cumque, odit facilis quam repellat exercitationem quas
@@ -39,11 +47,41 @@ const Testimonials = ({ classname }: { classname: string }) => {
             </p>
             <div className="flex-col flex items-center justify-center gap-2">
               <div className="flex">
-                <Image src={ystar} alt="" width={20} height={20} />
-                <Image src={ystar} alt="" width={20} height={20} />
-                <Image src={ystar} alt="" width={20} height={20} />
-                <Image src={ystar} alt="" width={20} height={20} />
-                <Image src={wstar} alt="" width={20} height={20} />
+                <Image
+                  src={ystar}
+                  alt=""
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <Image
+                  src={ystar}
+                  alt=""
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <Image
+                  src={ystar}
+                  alt=""
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <Image
+                  src={ystar}
+                  alt=""
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
+                <Image
+                  src={wstar}
+                  alt=""
+                  width={20}
+                  height={20}
+                  loading="lazy"
+                />
               </div>
               <div className="text-center space-y-2">
                 <h1 className="text-[#333333] font-bold font-helvetica text-2xl">
@@ -54,7 +92,7 @@ const Testimonials = ({ classname }: { classname: string }) => {
             </div>
           </div>
           <div className="absolute -right-9 lg:block hidden">
-            <Image src={leaf} alt="" width={300} height={100} />
+            <Image src={leaf} alt="" width={300} height={100} loading="lazy" />
           </div>
         </div>
       </div>

@@ -17,6 +17,7 @@ const BlogPostCard = ({
         alt={title}
         width={100}
         height={100}
+        loading="lazy"
         className="rounded-md w-24 h-20"
       />
       <div className="flex flex-col gap-2">

@@ -18,7 +18,13 @@ const WhyChooseus = () => {
           <div className="space-y-2 flex-1">
             <div className="flex items-end gap-2">
               <div>
-                <Image src={imag1} alt="" width={300} height={200} />
+                <Image
+                  src={imag1}
+                  alt=""
+                  width={300}
+                  height={200}
+                  loading="lazy"
+                />
               </div>
               <div>
                 <Image
@@ -27,22 +33,47 @@ const WhyChooseus = () => {
                   width={200}
                   height={200}
                   className="content-end"
+                  loading="lazy"
                 />
               </div>
             </div>
             <div className="flex items-start gap-2">
               <div>
-                <Image src={yogurt} alt="" width={200} height={200} />
+                <Image
+                  src={yogurt}
+                  alt=""
+                  width={200}
+                  height={200}
+                  loading="lazy"
+                />
               </div>
               <div>
-                <Image src={product3} alt="" width={150} height={100} />
+                <Image
+                  src={product3}
+                  alt=""
+                  width={150}
+                  height={100}
+                  loading="lazy"
+                />
               </div>
               <div className="flex flex-col gap-2">
                 <div>
-                  <Image src={image1} alt="" width={100} height={50} />
+                  <Image
+                    src={image1}
+                    alt=""
+                    width={100}
+                    height={50}
+                    loading="lazy"
+                  />
                 </div>
                 <div>
-                  <Image src={image2} alt="" width={100} height={50} />
+                  <Image
+                    src={image2}
+                    alt=""
+                    width={100}
+                    height={50}
+                    loading="lazy"
+                  />
                 </div>
               </div>
             </div>

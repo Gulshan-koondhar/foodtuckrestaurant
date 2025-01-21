@@ -29,7 +29,7 @@ const Categories = () => {
         </li>
       ))}
       <div className="relative bg-black bg-opacity-50 w-[250px]">
-        <Image src={image} alt="" width={250} height={280} />
+        <Image src={image} alt="" width={250} height={280} loading="lazy" />
 
         <div className="absolute top-5 left-5 ">
           <h3 className={`text-white text-[16px] font-bold ${inter.className}`}>

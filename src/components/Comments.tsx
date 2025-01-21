@@ -17,6 +17,7 @@ const Comments = ({
         alt=""
         width={100}
         height={100}
+        loading="lazy"
         className="w-10 h-10 rounded-full"
       />
       <div className="space-y-2">

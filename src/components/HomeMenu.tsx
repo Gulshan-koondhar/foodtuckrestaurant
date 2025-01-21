@@ -99,10 +99,17 @@ const HomeMenu = () => {
                 width={100}
                 height={100}
                 className="w-[1000px]"
+                loading="lazy"
               />
             </div>
             <div className="absolute lg:top-0">
-              <Image src={image1} alt="" width={230} height={100} />
+              <Image
+                src={image1}
+                alt=""
+                width={230}
+                height={100}
+                loading="lazy"
+              />
             </div>
           </div>
           <div className="flex flex-wrap w-full justify-evenly xl:w-3/4">

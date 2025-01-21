@@ -23,6 +23,7 @@ const AboutFeature = () => {
             src={third}
             width={1320}
             height={480}
+            loading="lazy"
           />
         </div>
       </section>
@@ -38,6 +39,7 @@ const AboutFeature = () => {
                   alt="Best Chef"
                   width={100}
                   height={100}
+                  loading="lazy"
                   layout="intrinsic"
                 />
                 <div className="p-6">
@@ -62,6 +64,7 @@ const AboutFeature = () => {
                   width={100}
                   height={100}
                   layout="intrinsic"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <h1 className="title-font text-lg font-medium text-black mb-2 text-bold text-center">
@@ -85,6 +88,7 @@ const AboutFeature = () => {
                   width={100}
                   height={100}
                   layout="intrinsic"
+                  loading="lazy"
                 />
                 <div className="p-6">
                   <h1 className="title-font text-lg font-medium text-black mb-2 text-bold text-center">

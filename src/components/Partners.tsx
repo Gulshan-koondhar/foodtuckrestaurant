@@ -21,12 +21,24 @@ const Partners = () => {
           We Work With the Best People
         </h1>
         <div className="flex flex-wrap md:flex-row-reverse my-2 gap-8  justify-between">
-          <Image src={bakery} alt="" width={100} height={100} />
-          <Image src={bistro} alt="" width={100} height={100} />
-          <Image src={wolfcoffee} alt="" width={100} height={100} />
-          <Image src={fork} alt="" width={100} height={100} />
-          <Image src={bakery1} alt="" width={100} height={100} />
-          <Image src={resturant} alt="" width={150} height={50} />
+          <Image src={bakery} alt="" width={100} height={100} loading="lazy" />
+          <Image src={bistro} alt="" width={100} height={100} loading="lazy" />
+          <Image
+            src={wolfcoffee}
+            alt=""
+            width={100}
+            height={100}
+            loading="lazy"
+          />
+          <Image src={fork} alt="" width={100} height={100} loading="lazy" />
+          <Image src={bakery1} alt="" width={100} height={100} loading="lazy" />
+          <Image
+            src={resturant}
+            alt=""
+            width={150}
+            height={50}
+            loading="lazy"
+          />
         </div>
       </div>
     </div>

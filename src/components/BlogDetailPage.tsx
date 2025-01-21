@@ -29,6 +29,7 @@ const BlogDetailPage = () => {
               alt=""
               width={800}
               height={100}
+              loading="lazy"
               className="w-[300px] h-[300px] sm:w-[800px] sm:h-[500px]"
             />
           </div>
@@ -69,6 +70,7 @@ const BlogDetailPage = () => {
               width={100}
               height={100}
               className="w-10 h-10"
+              loading="lazy"
             />
             <p className="text-2xl font-bold font-helvetica text-white">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -120,6 +122,7 @@ const BlogDetailPage = () => {
                 alt=""
                 width={300}
                 height={100}
+                loading="lazy"
                 className="w-[600px] h-[300px]"
               />
             </div>

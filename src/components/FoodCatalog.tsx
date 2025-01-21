@@ -54,7 +54,8 @@ const FoodCatalog = async () => {
                     src={item.image} // Correct path to images
                     alt={item.category}
                     className="object-cover rounded-lg"
-                    layout="responsive" // Ensures it maintains aspect ratio
+                    layout="responsive"
+                    loading="lazy" // Ensures it maintains aspect ratio
                     width={500} // Adjust width for responsiveness
                     height={300} // Adjust height for responsiveness
                   />
@@ -71,7 +72,7 @@ const FoodCatalog = async () => {
           ))}
         </div>
         <div className="absolute sm:-right-0 sm:top-[1400px] md:top-[1900px] lg:top-[1500px] xl:hidden">
-          <Image src={leaf} alt="" width={300} height={100} />
+          <Image src={leaf} alt="" width={300} height={100} loading="lazy" />
         </div>
       </div>
     </section>

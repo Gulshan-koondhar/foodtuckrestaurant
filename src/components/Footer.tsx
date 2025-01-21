@@ -109,7 +109,13 @@ const Footer = () => {
           <ul className="space-y-4 mt-4">
             {[footerImg, footerImg, footerImg].map((image, index) => (
               <li key={index} className="flex gap-4">
-                <Image src={image} alt="" width={50} height={50} />
+                <Image
+                  src={image}
+                  alt=""
+                  width={50}
+                  height={50}
+                  loading="lazy"
+                />
                 <div>
                   <p className="text-gray-400 text-sm">20 Feb 2022</p>
                   <p className="text-white text-base">Keep Your Business</p>
@@ -123,8 +129,8 @@ const Footer = () => {
       {/* Bottom Section */}
       <div className=" bg-[#4F4F4F] px-6 py-4 md:flex md:items-center md:justify-between">
         <span className="text-sm text-gray-500 ">
-          © 2023 <Link href="https://flowbite.com">Flowbite™</Link>. All Rights
-          Reserved.
+          © 2023 <Link href="https://flowbite.com">Flowbite™</Link>. All
+          Rights Reserved.
         </span>
         <div className="flex justify-center gap-4 mt-4 md:mt-0">
           {[Facebook, Twitter, Instagram, Youtube].map((Icon, index) => (

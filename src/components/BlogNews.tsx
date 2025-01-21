@@ -55,6 +55,7 @@ const BlogNews = () => {
             alt=""
             width={100}
             height={100}
+            loading="lazy"
             className="w-16 h-16 rounded-full"
           />
           <div className="flex justify-center flex-col items-center gap-2">
@@ -65,11 +66,11 @@ const BlogNews = () => {
               Blogger/Photographer
             </p>
             <div className="flex gap-1">
-              <Image src={star} alt="" width={20} height={20} />
-              <Image src={star} alt="" width={20} height={20} />
-              <Image src={star} alt="" width={20} height={20} />
-              <Image src={star} alt="" width={20} height={20} />
-              <Image src={star} alt="" width={20} height={20} />
+              <Image src={star} alt="" width={20} height={20} loading="lazy" />
+              <Image src={star} alt="" width={20} height={20} loading="lazy" />
+              <Image src={star} alt="" width={20} height={20} loading="lazy" />
+              <Image src={star} alt="" width={20} height={20} loading="lazy" />
+              <Image src={star} alt="" width={20} height={20} loading="lazy" />
               <p
                 className={`font-normal text-sm ${inter.className} text-[#828282]`}
               >

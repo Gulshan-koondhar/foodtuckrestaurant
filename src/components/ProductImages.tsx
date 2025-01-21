@@ -11,6 +11,7 @@ const ProductImages = ({ img }: { img: string }) => {
           width={350}
           height={100}
           className=" w-[300px] sm:w-[450px] "
+          loading="lazy"
         />
       </div>
     </div>

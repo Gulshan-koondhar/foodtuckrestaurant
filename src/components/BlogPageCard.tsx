@@ -30,6 +30,7 @@ const BlogPageCard = ({
           alt=""
           width={300}
           height={100}
+          loading="lazy"
           className="w-[300px] sm:w-[800px] h-[300px] sm:h-[500px]"
         />
       </div>

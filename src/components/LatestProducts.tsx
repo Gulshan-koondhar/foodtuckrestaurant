@@ -47,6 +47,7 @@ export default function LatestProducts() {
                 width={60}
                 height={60}
                 className="rounded"
+                loading="lazy"
               />
               <div>
                 <h3 className="text-sm font-medium">{product.name}</h3>

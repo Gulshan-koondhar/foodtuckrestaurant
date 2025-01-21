@@ -13,7 +13,13 @@ const Hero = (props: Iprops) => {
   return (
     <div className="max-w-screen-xl mx-auto">
       <div className="relative">
-        <Image src={props.image} alt="Hero" width={1500} height={100} />
+        <Image
+          src={props.image}
+          alt="Hero"
+          width={1500}
+          height={100}
+          loading="lazy"
+        />
         <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2">
           <h1 className="text-white text-xl text-center sm:text-5xl">
             {props.heading}

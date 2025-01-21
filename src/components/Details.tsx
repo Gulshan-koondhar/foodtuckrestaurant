@@ -16,6 +16,7 @@ const Details = () => {
           alt="Hero"
           width={1500}
           height={100}
+          loading="lazy"
           className=" h-[100px] sm:h-[200px]"
         />
         <Image
@@ -23,6 +24,7 @@ const Details = () => {
           alt=""
           width={1500}
           height={50}
+          loading="lazy"
           className="absolute top-0 h-[100px] sm:h-[200px]"
         />
         <div className="absolute top-1/2 left-1/2 tranform -translate-x-1/2 -translate-y-1/2 w-full px-8">
@@ -33,6 +35,7 @@ const Details = () => {
                 alt="Chefs"
                 width={100}
                 height={100}
+                loading="lazy"
                 className="w-5 h-5  sm:w-14 sm:h-14"
               />
               <h1 className="text-sm md:text-lg lg:text-3xl text-white">420</h1>
@@ -59,6 +62,7 @@ const Details = () => {
                 alt="Chefs"
                 width={100}
                 height={100}
+                loading="lazy"
                 className="w-5 h-5  sm:w-14 sm:h-14"
               />
               <h1 className="text-sm md:text-lg lg:text-3xl text-white">30+</h1>
@@ -72,6 +76,7 @@ const Details = () => {
                 alt="Chefs"
                 width={100}
                 height={100}
+                loading="lazy"
                 className="w-5 h-5 sm:w-14 sm:h-14"
               />
               <h1 className="text-sm md:text-lg lg:text-3xl text-white">220</h1>

@@ -28,11 +28,18 @@ const Menu = (props: IProps) => {
             width={350}
             height={600}
             className=""
+            loading="lazy"
           />
         </div>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <Image src={coffee} alt="Coffee" width={20} height={10} />
+            <Image
+              src={coffee}
+              alt="Coffee"
+              width={20}
+              height={10}
+              loading="lazy"
+            />
             <h1 className="text-5xl text-[#333333]">{props.heading}</h1>
           </div>
 

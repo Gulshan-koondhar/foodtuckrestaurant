@@ -16,7 +16,7 @@ const HomeBlogCard = ({
   return (
     <div>
       <div className="border border-white w-[300px] h-[450px]">
-        <Image src={img} alt="" width={400} height={150} />
+        <Image src={img} alt="" width={400} height={150} loading="lazy" />
         <div className="px-3 flex flex-col gap-4 py-2 justify-between">
           <p
             className={`${inter.className} font-normal text-[16px] text-[#FF9F0D]`}

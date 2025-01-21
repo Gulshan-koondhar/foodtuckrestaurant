@@ -18,7 +18,7 @@ const ChefPageCard = ({
 }) => {
   return (
     <div className="flex flex-col items-center">
-      <Image src={img} alt={name} width={200} height={100} />
+      <Image src={img} alt={name} width={200} height={100} loading="lazy" />
       <div className="flex flex-col items-center text-center">
         <h1 className="font-bold font-helvetica text-lg">{name}</h1>
 

@@ -53,6 +53,7 @@ const About = () => {
               alt=""
               width={400}
               height={100}
+              loading="lazy"
               className="col-span-2"
             />
             <Image
@@ -60,6 +61,7 @@ const About = () => {
               alt=""
               width={200}
               height={100}
+              loading="lazy"
               className="col-span-1"
             />
             <Image
@@ -67,6 +69,7 @@ const About = () => {
               alt=""
               width={200}
               height={100}
+              loading="lazy"
               className="col-span-1"
             />
           </div>

@@ -42,6 +42,7 @@ const AboutHero = () => {
               alt="hero"
               src={lemon}
               layout="intrinsic"
+              loading="lazy"
             />
             <div className="md:flex flex-col mt-10 gap-5 space-y-2">
               <Image
@@ -49,11 +50,13 @@ const AboutHero = () => {
                 alt="image2"
                 src={yogurt}
                 layout="intrinsic"
+                loading="lazy"
               />
               <Image
                 className="object-cover object-center w-[200px] h-32 md:h-40 rounded-lg"
                 alt="image3"
                 src={pasta}
+                loading="lazy"
                 layout="intrinsic"
               />
             </div>

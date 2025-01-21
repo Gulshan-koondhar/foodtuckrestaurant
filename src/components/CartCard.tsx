@@ -25,6 +25,7 @@ const CartCard = ({
               alt=""
               width={50}
               height={50}
+              loading="lazy"
               className="rounded-md"
             />
 

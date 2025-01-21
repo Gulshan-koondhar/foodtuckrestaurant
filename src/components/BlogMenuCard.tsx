@@ -17,6 +17,7 @@ const BlogMenuCard = ({
         alt={title}
         width={100}
         height={100}
+        loading="lazy"
         className="rounded-md w-16 h-16"
       />
       <div className="flex justify-between w-full">

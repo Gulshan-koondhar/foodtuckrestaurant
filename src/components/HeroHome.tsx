@@ -38,6 +38,7 @@ const HeroHome = () => {
           <Image
             src={hero}
             alt="Hero Image"
+            loading="lazy"
             className="w-[90%] md:w-auto max-w-[300px] md:max-w-full"
           />
         </div>

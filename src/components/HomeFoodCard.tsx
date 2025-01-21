@@ -17,7 +17,7 @@ const HomeFoodCard = ({
   return (
     <div className="flex gap-2">
       <div>
-        <Image src={img} alt="" width={70} height={70} />
+        <Image src={img} alt="" width={70} height={70} loading="lazy" />
       </div>
       <div className={`${inter.className}`}>
         <h1 className="font-bold text-lg">{foodName}</h1>

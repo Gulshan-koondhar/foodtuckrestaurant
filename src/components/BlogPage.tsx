@@ -26,6 +26,7 @@ const BlogPage = () => {
             alt=""
             width={200}
             height={100}
+            loading="lazy"
             className="content-center m-auto"
           />
         </div>

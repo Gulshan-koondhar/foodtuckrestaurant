@@ -23,6 +23,7 @@ const Card = ({
           alt=""
           width={250}
           height={250}
+          loading="lazy"
           className="object-cover w-[250px] h-[250px]"
         />
       </div>
