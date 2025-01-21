@@ -7,9 +7,9 @@ import {
   Youtube,
 } from "lucide-react";
 import { Inter } from "next/font/google";
-import Image from "next/image";
+
 import React from "react";
-import rating from "../../public/Rating.png";
+
 import { useCart } from "@/context/CartContext";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -61,21 +61,21 @@ const SingleProductDetail = ({
             $ {originalPrice}
           </p>
         </div>
-        <div>
+        {/* <div>
           <Image src={rating} alt="" width={200} height={100} />
-        </div>
+        </div> */}
         <div className="flex gap-3">
-          <div className="flex">
-            <div className="px-3 border-black border flex justify-center items-center py-2">
+          {/* <div className="flex">
+            <button className="px-3 border-black border flex justify-center items-center py-2">
               -
-            </div>
+            </button>
             <div className="px-3 border-black border flex justify-center items-center py-2">
-              1
+              
             </div>
             <div className="px-3 border-black border flex justify-center items-center py-2">
               +
             </div>
-          </div>
+          </div> */}
           <div>
             <button
               className="flex gap-1 bg-[#FF9F0D] px-4 py-2 text-white"

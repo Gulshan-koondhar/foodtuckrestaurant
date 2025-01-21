@@ -1,11 +1,15 @@
 import React from "react";
 import CartCard from "./CartCard";
-import { Inter } from "next/font/google";
-import { ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { ShoppingBag } from "lucide-react";
+import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 const CartHeading = () => {
   const { cart, removeFromCart } = useCart();
+  const subTotal = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
   return (
     <div className="max-w-screen-xl mx-auto p-4">
       <div>
@@ -19,7 +23,9 @@ const CartHeading = () => {
           </div>
           <div>
             {cart.length === 0 ? (
-              <p>No product in the Cart</p>
+              <p className="max-w-screen-xl mx-auto flex justify-center items-center font-bold text-2xl">
+                No product in the Cart
+              </p>
             ) : (
               <>
                 {cart.map((product, i) => (
@@ -38,41 +44,16 @@ const CartHeading = () => {
           </div>
         </div>
       </div>
-
-      <div className="my-8 flex flex-col sm:flex-row">
-        <div className="flex-1">
-          <h1 className="font-helvetica font-bold text-3xl my-3">
-            Coupon Code
-          </h1>
-          <div className="w-[300px] sm:w-[400px] border border-b-2 p-2 flex flex-col gap-3 rounded-md">
-            <p
-              className={`text-lg font-normal ${inter.className} text-[#828282]`}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque
-              diam pellentesque bibendum non
-            </p>
-            <form
-              action=""
-              className="flex border border-black b rounded-md pl-2 border-opacity-40"
-            >
-              <input
-                type="text"
-                placeholder="Enter Code Here"
-                className="w-full"
-              />
-              <button className="bg-[#FF9F0D] py-2 px-4 ">Apply </button>
-            </form>
-          </div>
-        </div>
-        <div className="flex-1">
+      <div className="my-8 flex items-center justify-center">
+        <div className="">
           <h1 className="font-helvetica font-bold text-3xl my-3">Total Bill</h1>
-          <div className="w-[300px] sm:w-[400px] border border-b-2 p-2 flex flex-col gap-3 rounded-md">
+          <div className="w-full border border-b-2 p-2 flex flex-col gap-3 rounded-md">
             <div className="flex justify-between">
               <h1 className="font-bold font-helvetica text-xl">
                 Cart SubTotal
               </h1>
               <p className={`${inter.className} font-bold text-[18px]`}>
-                $120.00
+                $ {subTotal}
               </p>
             </div>
             <div className="flex justify-between">
@@ -84,14 +65,14 @@ const CartHeading = () => {
               <p
                 className={`${inter.className} font-normal text-[#4F4F4F] text-[18px]`}
               >
-                $00.00
+                $0
               </p>
             </div>
             <hr />
             <div className="flex justify-between">
               <h1 className="font-bold font-helvetica text-xl">Total Amount</h1>
               <p className={`${inter.className} font-bold text-[18px]`}>
-                $205.00
+                ${subTotal}
               </p>
             </div>
           </div>

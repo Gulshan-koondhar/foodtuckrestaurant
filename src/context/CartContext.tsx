@@ -1,4 +1,5 @@
 "use client";
+import { Toastify } from "@/components/Toastify";
 import {
   createContext,
   useContext,
@@ -43,7 +44,8 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const addToCart = (item: CartItem) => {
     setCart((prevCart) => {
-      alert("product added to cart");
+      alert("Product Added to Cart");
+      <Toastify />;
       const existingItem = prevCart.find((cartItem) => cartItem.id === item.id);
       if (existingItem) {
         alert("Product Already Exist");
