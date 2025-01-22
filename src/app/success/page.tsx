@@ -22,9 +22,14 @@ const Success = () => {
           </p>
           <p>Have a great day!</p>
 
-          <button className="mt-5 bg-orange-700 px-4 py-3 rounded-md text-white font-bold">
-            <Link href="/">GO back</Link>
-          </button>
+          <div className="flex gap-5">
+            <button className="mt-5 bg-orange-700 px-4 py-3 rounded-md text-white font-bold">
+              <Link href="/">GO back</Link>
+            </button>
+            <button className="mt-5 bg-orange-700 px-4 py-3 rounded-md text-white font-bold">
+              <Link href="/tracking">Order Tracking</Link>
+            </button>
+          </div>
         </div>
       </div>
       <Footer />
