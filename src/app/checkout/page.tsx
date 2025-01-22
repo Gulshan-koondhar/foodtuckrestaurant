@@ -99,6 +99,7 @@ const Page = () => {
 
           <Link
             href={"/success"}
+            onClick={() => (cart.length = 0)}
             className="w-full flex justify-center items-center mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
           >
             Place an order
