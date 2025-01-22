@@ -1,11 +1,19 @@
+"use client";
 import React from "react";
-import checkout from "../../../public/Rectangle 8933.png";
 import Image from "next/image";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import banner from "../../../public/unsplash_4ycv3Ky1ZZU.png";
+import { useCart } from "@/context/CartContext";
+import Link from "next/link";
+import Form from "@/components/Form";
 
-const page = () => {
+const Page = () => {
+  const { cart } = useCart();
+  const subTotal = cart.reduce(
+    (total, product) => total + product.price * product.quantity,
+    0
+  );
   return (
     <div className="max-w-screen-xl mx-auto">
       {/* Header */}
@@ -16,155 +24,8 @@ const page = () => {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
-            <div className="grid gap-4">
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    First name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Last name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Phone number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="company"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="country"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Country
-                  </label>
-                  <select
-                    id="country"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  >
-                    <option value="">Choose country</option>
-                    <option value="us">United States</option>
-                    <option value="uk">United Kingdom</option>
-                    <option value="ca">Canada</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    City
-                  </label>
-                  <input
-                    type="text"
-                    id="city"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                    placeholder="Choose city"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="zipCode"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Zip code
-                  </label>
-                  <input
-                    type="text"
-                    id="zipCode"
-                    className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label
-                  htmlFor="address1"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Address 1
-                </label>
-                <input
-                  type="text"
-                  id="address1"
-                  className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                />
-              </div>
-
-              <div>
-                <label
-                  htmlFor="address2"
-                  className="block text-sm font-medium text-gray-700 mb-1"
-                >
-                  Address 2
-                </label>
-                <input
-                  type="text"
-                  id="address2"
-                  className="w-[250px]sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                />
-              </div>
+            <div className="grid gap-4 items-center justify-center">
+              <Form />
             </div>
           </div>
 
@@ -182,10 +43,13 @@ const page = () => {
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row justify-between pt-4">
-            <button className="py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12 px-3">
+          <div className="flex flex-col sm:flex-row gap-2 items-center justify-center pt-4">
+            <Link
+              href={"/cart"}
+              className="py-2 border border-gray-300 rounded-md shadow-sm text-lg text-center font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12 px-3"
+            >
               Back to cart
-            </button>
+            </Link>
             <button className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12">
               Proceed to shipping
             </button>
@@ -193,23 +57,25 @@ const page = () => {
         </div>
 
         {/* Right Column - Order Summary */}
-        <div className="p-6 rounded-lg border-2 border-gray-300">
+        <div className="p-6 rounded-lg border-2 border-gray-300 h-max">
           <h2 className="text-xl font-semibold mb-4">Order Summary</h2>
           <div className="space-y-4">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="flex items-center space-x-4">
+            {cart.map((item) => (
+              <div key={item.id} className="flex items-center space-x-4">
                 <div className="relative h-16 w-16">
                   <Image
-                    src={checkout}
-                    alt="Chicken Tikka Kebab"
+                    src={item.image}
+                    alt={item.name}
                     fill
                     className="rounded-md object-cover"
                   />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-medium">Chicken Tikka Kebab</h3>
-                  <p className="text-sm text-gray-500">150 gm net</p>
-                  <p className="text-sm text-gray-500">50$</p>
+                  <div className="flex justify-between">
+                    <h3 className="font-medium">{item.name}</h3>
+                    <p>QTY: {item.quantity}</p>
+                  </div>
+                  <p className="text-sm text-gray-500">{item.price}$</p>
                 </div>
               </div>
             ))}
@@ -218,33 +84,29 @@ const page = () => {
           <div className="mt-6 space-y-2 border-t pt-4">
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium">130$</span>
+              <span className="font-medium">$ {subTotal}</span>
             </div>
             <div className="flex justify-between text-sm">
               <span className="text-gray-600">Shipping</span>
               <span className="font-medium">Free</span>
             </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Discount</span>
-              <span className="font-medium">25%</span>
-            </div>
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Tax</span>
-              <span className="font-medium">54.76$</span>
-            </div>
+
             <div className="flex justify-between border-t pt-2">
               <span className="font-semibold">Total</span>
-              <span className="font-semibold">432.65$</span>
+              <span className="font-semibold">$ {subTotal}</span>
             </div>
           </div>
 
-          <button className="w-full mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+          <Link
+            href={"/success"}
+            className="w-full flex justify-center items-center mt-6 px-6 py-3 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+          >
             Place an order
-          </button>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export default page;
+export default Page;

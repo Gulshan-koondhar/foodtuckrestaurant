@@ -3,6 +3,7 @@ import CartCard from "./CartCard";
 import { useCart } from "@/context/CartContext";
 import { ShoppingBag } from "lucide-react";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 const CartHeading = () => {
   const { cart, removeFromCart } = useCart();
@@ -44,45 +45,51 @@ const CartHeading = () => {
           </div>
         </div>
       </div>
-      <div className="my-8 flex items-center justify-center">
-        <div className="">
-          <h1 className="font-helvetica font-bold text-3xl my-3">Total Bill</h1>
-          <div className="w-full border border-b-2 p-2 flex flex-col gap-3 rounded-md">
-            <div className="flex justify-between">
-              <h1 className="font-bold font-helvetica text-xl">
-                Cart SubTotal
-              </h1>
-              <p className={`${inter.className} font-bold text-[18px]`}>
-                $ {subTotal}
-              </p>
+      {cart.length > 0 && (
+        <div className="my-8 flex items-center justify-center">
+          <div className="">
+            <h1 className="font-helvetica font-bold text-3xl my-3">
+              Total Bill
+            </h1>
+            <div className="w-full border border-b-2 p-2 flex flex-col gap-3 rounded-md">
+              <div className="flex justify-between">
+                <h1 className="font-bold font-helvetica text-xl">
+                  Cart SubTotal
+                </h1>
+                <p className={`${inter.className} font-bold text-[18px]`}>
+                  $ {subTotal}
+                </p>
+              </div>
+              <div className="flex justify-between">
+                <h1
+                  className={`${inter.className} font-normal text-[#4F4F4F] text-[18px]`}
+                >
+                  Shipping Charges
+                </h1>
+                <p
+                  className={`${inter.className} font-normal text-[#4F4F4F] text-[18px]`}
+                >
+                  $0
+                </p>
+              </div>
+              <hr />
+              <div className="flex justify-between">
+                <h1 className="font-bold font-helvetica text-xl">
+                  Total Amount
+                </h1>
+                <p className={`${inter.className} font-bold text-[18px]`}>
+                  ${subTotal}
+                </p>
+              </div>
             </div>
-            <div className="flex justify-between">
-              <h1
-                className={`${inter.className} font-normal text-[#4F4F4F] text-[18px]`}
-              >
-                Shipping Charges
-              </h1>
-              <p
-                className={`${inter.className} font-normal text-[#4F4F4F] text-[18px]`}
-              >
-                $0
-              </p>
+            <div className="bg-[#FF9F0D] flex items-center justify-center mt-4 px-4 py-2 text-white w-[300px] text-center">
+              <Link href={"/checkout"} className="flex">
+                Proceed to Checkout <ShoppingBag />
+              </Link>
             </div>
-            <hr />
-            <div className="flex justify-between">
-              <h1 className="font-bold font-helvetica text-xl">Total Amount</h1>
-              <p className={`${inter.className} font-bold text-[18px]`}>
-                ${subTotal}
-              </p>
-            </div>
-          </div>
-          <div className="bg-[#FF9F0D] flex items-center justify-center mt-4 px-4 py-2 text-white w-[300px] text-center">
-            <button className="flex">
-              Proceed to Checkout <ShoppingBag />
-            </button>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
