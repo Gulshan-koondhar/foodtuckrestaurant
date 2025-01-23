@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import Navbar from "./Navbar";
 import SearchForm from "./Search";
 import { useCart } from "@/context/CartContext";
+import Link from "next/link";
 const HomeHeader = () => {
   const { cart } = useCart();
   const [showMenu, setShowMenu] = useState(false);
@@ -29,7 +30,9 @@ const HomeHeader = () => {
           ) : (
             ""
           )}
-          <ShoppingBag />
+          <Link href={"/cart"}>
+            <ShoppingBag className="hover:text-[#FF9F0D]" />
+          </Link>
           <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 left-3">
             {cart.length}
           </div>
@@ -40,7 +43,9 @@ const HomeHeader = () => {
         <Navbar classname="hidden md:flex space-x-6" />
         <div className="lg:flex gap-2 items-center hidden relative">
           <SearchForm />
-          <ShoppingBag />
+          <Link href={"/cart"}>
+            <ShoppingBag className="hover:text-[#FF9F0D]" />
+          </Link>
           <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 -right-1">
             {cart.length}
           </div>

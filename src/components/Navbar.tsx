@@ -1,21 +1,19 @@
 "use client";
-import { ChevronDown } from "lucide-react";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import React, { useState } from "react";
+import React from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 const Navbar = ({ classname }: { classname: string }) => {
   const pathname = usePathname();
-  const [pages, setPages] = useState(false);
-  const handlePages = () => {
-    setPages(!pages);
-  };
+
   return (
     <nav className={classname}>
       <Link
-        className={`${pathname === "/" ? "active" : ""}  ${inter.className}`}
+        className={`hover:text-[#FF9F0D] ${
+          pathname === "/" ? "active" : ""
+        } ${inter.className}`}
         href="/"
       >
         Home
@@ -37,19 +35,13 @@ const Navbar = ({ classname }: { classname: string }) => {
         Blog
       </Link>
 
-      <Link href="" onClick={handlePages} className="flex">
-        Pages <ChevronDown size={20} className="mt-1" />
-        {pages ? (
-          <div className="flex flex-col z-30 absolute gap-2 bg-black bg-opacity-90 p-4 border rounded-md top-40 md:top-20">
-            <Link href="/signin">Sign In</Link>
-            <Link href="/signup">Sign Up</Link>
-            <Link href="/cart">Cart</Link>
-            <Link href="/checkout">Checkout</Link>
-            <Link href="/chef">Chefs</Link>
-          </div>
-        ) : (
-          ""
-        )}
+      <Link
+        href="/reservation"
+        className={`hover:text-[#FF9F0D] ${
+          pathname === "/reservation" ? "active" : ""
+        } ${inter.className}`}
+      >
+        Reservation
       </Link>
 
       <Link
@@ -72,11 +64,11 @@ const Navbar = ({ classname }: { classname: string }) => {
 
       <Link
         className={`hover:text-[#FF9F0D] ${
-          pathname === "/pages" ? "active" : ""
+          pathname === "/tracking" ? "active" : ""
         } ${inter.className}`}
-        href="/contact"
+        href="/tracking"
       >
-        Contact
+        Order Tracking
       </Link>
     </nav>
   );
