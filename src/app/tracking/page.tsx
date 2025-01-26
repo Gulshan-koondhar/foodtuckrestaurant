@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import React from "react";
 import banner from "@/../public/unsplash_4ycv3Ky1ZZU.png";
 import Footer from "@/components/Footer";
 import { client } from "@/sanity/lib/client";
@@ -13,16 +13,28 @@ export interface Items {
   price: number;
   _key: string;
 }
+
 interface Order {
   cartItems: Items[];
   _id: string;
   _createdAt: string;
 }
-const Tracking = async () => {
-  const query = `*[_type == "order"]{
-  cartItems, _id, _createdAt
-}`;
-  const orders: Order[] = await client.fetch(query);
+
+const Tracking = () => {
+  const [orders, setOrders] = useState<Order[]>([]);
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      const query = `*[_type == "order"]{
+        cartItems, _id, _createdAt
+      }`;
+      const fetchedOrders: Order[] = await client.fetch(query);
+      console.log("Fetched Orders:", fetchedOrders); // Debugging log
+      setOrders(fetchedOrders);
+    };
+
+    fetchOrders();
+  }, []);
 
   return (
     <div className="max-w-screen-xl mx-auto">
