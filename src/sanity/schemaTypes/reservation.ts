@@ -10,6 +10,5 @@ export default {
     { name: "contactNumber", title: "Contact Number", type: "string" },
     { name: "email", title: "Email Address", type: "string" },
     { name: "specialRequests", title: "Special Requests", type: "text" },
-    { name: "reservationType", title: "Reservation Type", type: "string" },
   ],
 };
