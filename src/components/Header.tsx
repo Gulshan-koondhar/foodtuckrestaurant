@@ -2,20 +2,18 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import { Inter } from "next/font/google";
-import { Menu, ShoppingBag, UserRound } from "lucide-react";
+import { Menu, ShoppingBag } from "lucide-react";
 import { usePathname } from "next/navigation";
-import Profile from "./Profile";
+
 import Navbar from "./Navbar";
 import { useCart } from "@/context/CartContext";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 
 const inter = Inter({ subsets: ["latin"] });
 const Header = () => {
   const { cart } = useCart();
   const pathname = usePathname();
-  const [profileActive, setProfileActive] = useState(false);
-  const handleProfile = () => {
-    setProfileActive(!profileActive);
-  };
+
   const [showMenu, setShowMenu] = useState(false);
   const hanldeMenu = () => {
     setShowMenu(!showMenu);
@@ -35,14 +33,12 @@ const Header = () => {
 
         {/* Icons */}
         <div className="flex items-center space-x-4 relative">
-          <UserRound onClick={handleProfile} className="cursor-pointer" />
-          {profileActive ? (
-            <div className="absolute top-10 right-10 ">
-              <Profile />
-            </div>
-          ) : (
-            ""
-          )}
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <Link
             className={`hover:text-[#FF9F0D] ${
               pathname === "/cart" ? "active" : ""

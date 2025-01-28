@@ -7,6 +7,7 @@ import Navbar from "./Navbar";
 import SearchForm from "./Search";
 import { useCart } from "@/context/CartContext";
 import Link from "next/link";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 const HomeHeader = () => {
   const { cart } = useCart();
   const [showMenu, setShowMenu] = useState(false);
@@ -31,6 +32,13 @@ const HomeHeader = () => {
             ""
           )}
           <Link href={"/cart"}>
+            <SignedOut>
+              <SignInButton />
+            </SignedOut>
+            <SearchForm />
+            <SignedIn>
+              <UserButton />
+            </SignedIn>
             <ShoppingBag className="hover:text-[#FF9F0D]" />
           </Link>
           <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 left-3">
@@ -43,6 +51,12 @@ const HomeHeader = () => {
         <Navbar classname="hidden md:flex space-x-6" />
         <div className="lg:flex gap-2 items-center hidden relative">
           <SearchForm />
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
           <Link href={"/cart"}>
             <ShoppingBag className="hover:text-[#FF9F0D]" />
           </Link>
