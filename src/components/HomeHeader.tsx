@@ -32,16 +32,15 @@ const HomeHeader = () => {
             ""
           )}
           <Link href={"/cart"}>
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
-            <SearchForm />
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
             <ShoppingBag className="hover:text-[#FF9F0D]" />
           </Link>
-          <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-1 left-3">
+          <SignedOut>
+            <SignInButton />
+          </SignedOut>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <div className="absolute bg-red-500 w-5 h-5 rounded-full text-center -top-2 left-16">
             {cart.length}
           </div>
         </div>
