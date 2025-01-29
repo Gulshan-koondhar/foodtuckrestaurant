@@ -1,12 +1,19 @@
+"use client";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import React from "react";
+import React, { useEffect } from "react";
 import banner from "../../../public/unsplash_4ycv3Ky1ZZU.png";
 import Footer from "@/components/Footer";
 import Link from "next/link";
 import { CheckCheck } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 
 const Success = () => {
+  const { clearCart } = useCart();
+
+  useEffect(() => {
+    clearCart();
+  });
   return (
     <div className="max-w-screen-xl mx-auto">
       <Header />
@@ -22,11 +29,11 @@ const Success = () => {
           </p>
           <p>Have a great day!</p>
 
-          <div className="flex gap-5">
-            <button className="mt-5 bg-orange-700 px-4 py-3 rounded-md text-white font-bold">
+          <div className="flex gap-5 justify-center items-center w-full">
+            <button className="mt-5 bg-[#FF9F0D] hover:bg-[#b38136] px-4 py-3 rounded-md text-white font-bold">
               <Link href="/">GO back</Link>
             </button>
-            <button className="mt-5 bg-orange-700 px-4 py-3 rounded-md text-white font-bold">
+            <button className="mt-5 bg-[#FF9F0D] hover:bg-[#B38136] px-4 py-3 rounded-md text-white font-bold">
               <Link href="/tracking">Order Tracking</Link>
             </button>
           </div>

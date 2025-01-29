@@ -47,7 +47,7 @@ const Header = () => {
           >
             <ShoppingBag />
           </Link>
-          <div className="absolute bg-red-500 w-5 h-5 text-center rounded-full left-9 -top-2">
+          <div className="absolute bg-red-500 w-5 h-5 text-center rounded-full left-16 -top-2">
             {cart.length}
           </div>
           <Menu onClick={hanldeMenu} className="block sm:hidden" />

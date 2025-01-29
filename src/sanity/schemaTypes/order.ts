@@ -28,11 +28,7 @@ export default {
       type: "string",
       title: "City",
     },
-    {
-      name: "postalCode",
-      type: "string",
-      title: "Postal Code",
-    },
+
     {
       name: "country",
       type: "string",

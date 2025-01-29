@@ -11,14 +11,13 @@ import { client } from "@/sanity/lib/client";
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
 
 const Page = () => {
-  const { cart, clearCart } = useCart();
+  const { cart } = useCart();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     address: "",
     phone: "",
     city: "",
-    postalCode: "",
     country: "",
   });
 
@@ -39,7 +38,6 @@ const Page = () => {
       address: formData.address,
       city: formData.city,
       phone: formData.phone,
-      postalCode: formData.postalCode,
       country: formData.country,
       cartItems: cart.map((item) => ({
         _key: item.id,
@@ -74,9 +72,6 @@ const Page = () => {
       if (result?.error) {
         console.error(result.error);
         alert("Failed to redirect to payment page. Please try again.");
-      } else {
-        // Clear the cart after successful payment
-        clearCart();
       }
     } catch (error) {
       console.error("Error placing order:", error);
@@ -92,126 +87,102 @@ const Page = () => {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
-            <form>
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    First name
-                  </label>
-                  <input
-                    type="text"
-                    id="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
+            <form className="grid grid-cols-2 gap-2">
+              <div>
+                <label
+                  htmlFor="firstName"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  First name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
               </div>
-
-              {/* Repeat similar blocks for the rest of the fields */}
-
-              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Email address
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Phone number
-                  </label>
-                  <input
-                    type="number"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="address"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Address
-                  </label>
-                  <input
-                    type="string"
-                    id="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="country"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Country
-                  </label>
-                  <input
-                    type="string"
-                    id="country"
-                    value={formData.country}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="city"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    City
-                  </label>
-                  <input
-                    type="string"
-                    id="city"
-                    value={formData.city}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="postalcode"
-                    className="block text-sm font-medium text-gray-700 mb-1"
-                  >
-                    Zip Code
-                  </label>
-                  <input
-                    type="string"
-                    id="postalcode"
-                    value={formData.postalCode}
-                    onChange={handleChange}
-                    required
-                    className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
-                  />
-                </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Email address
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="phone"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Phone number
+                </label>
+                <input
+                  type="number"
+                  id="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="address"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Address
+                </label>
+                <input
+                  type="string"
+                  id="address"
+                  value={formData.address}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="country"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  Country
+                </label>
+                <input
+                  type="string"
+                  id="country"
+                  value={formData.country}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="city"
+                  className="block text-sm font-medium text-gray-700 mb-1"
+                >
+                  City
+                </label>
+                <input
+                  type="string"
+                  id="city"
+                  value={formData.city}
+                  onChange={handleChange}
+                  required
+                  className="w-[250px] sm:w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-orange-500"
+                />
               </div>
             </form>
           </div>
@@ -238,15 +209,21 @@ const Page = () => {
                 <div className="flex-1">
                   <h3 className="font-medium">{item.name}</h3>
                   <p>QTY: {item.quantity}</p>
-                  <p className="text-sm text-gray-500">${item.price}</p>
+                </div>
+                <div>
+                  <p className="text-lg font-bold text-gray-500">
+                    ${item.price}
+                  </p>
                 </div>
               </div>
             ))}
           </div>
           <div className="mt-6 space-y-2 border-t pt-4">
-            <div className="flex justify-between text-sm">
-              <span className="text-gray-600">Subtotal</span>
-              <span className="font-medium">$ {subTotal}</span>
+            <div className="flex justify-between">
+              <span className="text-gray-900 font-bold ">Subtotal</span>
+              <span className="font-semibold text-gray-600 text-lg">
+                $ {subTotal}
+              </span>
             </div>
           </div>
         </div>

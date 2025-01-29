@@ -48,36 +48,64 @@ customerName,address,cartItems,totalAmount,
         </div>
         <div className="mb-6">
           <h2 className="text-black text-lg font-bold mb-4">Items</h2>
-          {order.cartItems.map((item: Items) => (
-            <div key={item._key} className="flex flex-wrap">
-              <div className="flex gap-2 border p-2 rounded-md bg-white shadow-xl">
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  width={50}
-                  height={50}
-                  className="rounded-md"
-                />
-                <div>
-                  <h1 className="font-bold">
-                    {item.name}{" "}
-                    <span className="font-medium">x {item.quantity}</span>
-                  </h1>
-                  <p className="font-semibold">{item.price * item.quantity}</p>
+          <div className="flex flex-wrap gap-3">
+            {order.cartItems.map((item: Items) => (
+              <div key={item._key} className="flex ">
+                <div className="flex gap-2 border p-2 rounded-md bg-white shadow-xl">
+                  <Image
+                    src={item.image}
+                    alt={item.name}
+                    width={50}
+                    height={50}
+                    className="rounded-md"
+                  />
+                  <div>
+                    <h1 className="font-bold">
+                      {item.name}{" "}
+                      <span className="font-medium">x {item.quantity}</span>
+                    </h1>
+                    <p className="font-semibold">
+                      {item.price * item.quantity}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
         <div className="flex gap-6">
           <div className="mb-6">
-            <h2 className="text-black text-lg font-bold mb-4">Payment</h2>
-            <p className="text-gray-600">Visa ending ****1234</p>
-          </div>
-
-          <div className="mb-6">
-            <h2 className="text-black text-lg font-bold mb-4">Delivery</h2>
-            <p className="text-gray-600">{order.address}</p>
+            <h2 className="text-black text-lg font-bold mb-4">
+              Shipping Details
+            </h2>
+            <div className="space-y-4">
+              <p className="text-gray-600">
+                <span className="text-black text-lg font-semibold">
+                  Customer Name:
+                </span>{" "}
+                {order.customerName}
+              </p>
+              <p className="text-gray-600">
+                <span className="text-black text-lg font-semibold">
+                  Address:
+                </span>{" "}
+                {order.address}
+              </p>
+              <p className="text-gray-600">
+                <span className="text-black text-lg font-semibold">City:</span>{" "}
+                {order.city}
+              </p>
+              <p className="text-gray-600">
+                <span className="text-black text-lg font-semibold">
+                  Phone#:
+                </span>{" "}
+                {order.phone}
+              </p>
+              <p className="text-gray-600">
+                <span className="text-black text-lg font-semibold">Email:</span>{" "}
+                {order.email}
+              </p>
+            </div>
           </div>
         </div>
         <div className="mb-6">
@@ -87,13 +115,10 @@ customerName,address,cartItems,totalAmount,
               <p className="text-gray-600">Subtotal</p>
               <p className="font-medium">$ {order.totalAmount.toFixed(2)}</p>
             </div>
-            <div className="flex justify-between">
-              <p className="text-gray-600">Delivery</p>
-              <p className="font-medium">$ 10.00</p>
-            </div>
-            <div className="flex justify-between font-semibold text-gray-700">
+
+            <div className="flex justify-between font-bold text-gray-900">
               <p>Total</p>
-              <p>$ {(order.totalAmount + 10).toFixed(2)}</p>
+              <p>$ {order.totalAmount.toFixed(2)}</p>
             </div>
           </div>
         </div>
