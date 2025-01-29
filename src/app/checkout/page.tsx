@@ -5,8 +5,10 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import banner from "../../../public/unsplash_4ycv3Ky1ZZU.png";
 import { useCart } from "@/context/CartContext";
-// import Form from "@/components/Form"; // Import Sanity client
+import { loadStripe } from "@stripe/stripe-js";
 import { client } from "@/sanity/lib/client";
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY!);
 
 const Page = () => {
   const { cart, clearCart } = useCart();
@@ -24,6 +26,7 @@ const Page = () => {
     (total, product) => total + product.price * product.quantity,
     0
   );
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, [e.target.id]: e.target.value });
   };
@@ -50,9 +53,31 @@ const Page = () => {
     };
 
     try {
+      // Create a Stripe Checkout session
+      const stripe = await stripePromise;
+      const response = await fetch("/api/create-checkout-session", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ cart, totalAmount: subTotal }),
+      });
+
+      const session = await response.json();
+
       await client.create(orderData);
-      alert("Order placed successfully!");
-      clearCart();
+      // Redirect to Stripe Checkout
+      const result = await stripe?.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (result?.error) {
+        console.error(result.error);
+        alert("Failed to redirect to payment page. Please try again.");
+      } else {
+        // Clear the cart after successful payment
+        clearCart();
+      }
     } catch (error) {
       console.error("Error placing order:", error);
       alert("Failed to place order. Please try again.");
