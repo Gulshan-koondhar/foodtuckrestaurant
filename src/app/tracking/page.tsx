@@ -35,7 +35,7 @@ const groupOrdersByDate = (orders: Order[]) => {
     if (!acc[formattedDate]) {
       acc[formattedDate] = [];
     }
-    acc[formattedDate].push(order);
+    acc[formattedDate].unshift(order);
     return acc;
   }, {});
 
@@ -63,7 +63,6 @@ const Tracking = () => {
         cartItems, _id, _createdAt
       }`;
       const fetchedOrders: Order[] = await client.fetch(query);
-      console.log("Fetched Orders:", fetchedOrders); // Debugging log
       const grouped = groupOrdersByDate(fetchedOrders);
       setGroupedOrders(grouped);
     };
