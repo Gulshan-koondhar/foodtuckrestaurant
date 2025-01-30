@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import CartCard from "./CartCard";
 import { useCart } from "@/context/CartContext";
 import { ShoppingBag } from "lucide-react";
@@ -7,6 +7,7 @@ import Link from "next/link";
 const inter = Inter({ subsets: ["latin"] });
 const CartHeading = () => {
   const { cart, removeFromCart } = useCart();
+  const [loading, setLoading] = useState(false);
   const subTotal = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
@@ -15,8 +16,8 @@ const CartHeading = () => {
     <div className="max-w-screen-xl mx-auto p-4">
       <div>
         <div className="flex flex-col gap-8">
-          <div className="grid grid-cols-6 grid-rows-1">
-            <div className="col-span-2">Product</div>
+          <div className="grid grid-cols-5 sm:grid-cols-6 grid-rows-1">
+            <div className="col-span-1 sm:col-span-2">Product</div>
             <div className="col-span-1">Price</div>
             <div className="col-span-1">Quantity</div>
             <div className="col-span-1">Total</div>
@@ -82,9 +83,19 @@ const CartHeading = () => {
                 </p>
               </div>
             </div>
-            <div className="bg-[#FF9F0D] flex items-center justify-center mt-4 px-4 py-2 text-white w-[300px] text-center">
-              <Link href={"/checkout"} className="flex">
-                Proceed to Checkout <ShoppingBag />
+            <div className="bg-[#FF9F0D]  flex items-center justify-center mt-4 px-4 py-2 text-white w-[300px] text-center">
+              <Link
+                href={"/checkout"}
+                className="flex"
+                onClick={() => setLoading(true)}
+              >
+                {loading ? (
+                  "Proceeding..."
+                ) : (
+                  <>
+                    Proceed to Checkout <ShoppingBag />
+                  </>
+                )}
               </Link>
             </div>
           </div>

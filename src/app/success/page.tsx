@@ -13,7 +13,7 @@ const Success = () => {
 
   useEffect(() => {
     clearCart();
-  });
+  }, []);
   return (
     <div className="max-w-screen-xl mx-auto">
       <Header />

@@ -20,7 +20,7 @@ const Page = () => {
     city: "",
     country: "",
   });
-
+  const [loading, setLoading] = useState(false);
   const subTotal = cart.reduce(
     (total, product) => total + product.price * product.quantity,
     0
@@ -31,6 +31,7 @@ const Page = () => {
   };
 
   const handlePlaceOrder = async () => {
+    setLoading(true);
     const orderData = {
       _type: "order",
       customerName: formData.name,
@@ -87,7 +88,7 @@ const Page = () => {
         <div className="space-y-6">
           <div>
             <h2 className="text-xl font-semibold mb-4">Shipping Address</h2>
-            <form className="grid grid-cols-2 gap-2">
+            <form className="grid grid-col-1 md:grid-cols-2 gap-2 items-center">
               <div>
                 <label
                   htmlFor="firstName"
@@ -190,7 +191,7 @@ const Page = () => {
             onClick={handlePlaceOrder}
             className="px-6 py-2 bg-orange-500 text-white rounded-md shadow-sm text-sm font-medium hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 w-72 h-12"
           >
-            Place Order
+            {loading ? "Placing Order..." : "Place Order"}
           </button>
         </div>
         <div className="p-6 rounded-lg border-2 border-gray-300 h-max">
@@ -202,7 +203,8 @@ const Page = () => {
                   <Image
                     src={item.image}
                     alt={item.name}
-                    fill
+                    width={100}
+                    height={100}
                     className="rounded-md object-cover"
                   />
                 </div>

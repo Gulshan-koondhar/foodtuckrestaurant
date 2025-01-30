@@ -2,9 +2,17 @@ import React from "react";
 
 import Card2 from "./Card2";
 import { client } from "@/sanity/lib/client";
-import { IProduct } from "./Products";
-import Link from "next/link";
 
+import Link from "next/link";
+type IProduct = {
+  name: string;
+  description: string;
+  price: number;
+  currentSlug: string;
+  category: string;
+  imageUrl: string;
+  originalPrice: number;
+};
 const SimilarProducts = async ({ category }: { category: string }) => {
   const query = `*[_type == "food" && category == "${category}" ]{
   name,price, originalPrice,"currentSlug": slug.current,

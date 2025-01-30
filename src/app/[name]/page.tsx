@@ -1,10 +1,19 @@
 import Card from "@/components/Card";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import { IProduct } from "@/components/Products";
 import { client } from "@/sanity/lib/client";
 import banner from "@/../public/unsplash_4ycv3Ky1ZZU.png";
 import Link from "next/link";
+
+type IProduct = {
+  name: string;
+  description: string;
+  price: number;
+  currentSlug: string;
+  category: string;
+  imageUrl: string;
+  originalPrice: number;
+};
 
 // Corrected function signature
 export default async function Page({
