@@ -4,6 +4,12 @@ export default {
   title: "Order",
   fields: [
     {
+      name: "userId",
+      type: "string",
+      title: "User ID",
+      description: "The ID of the user placing the order",
+    },
+    {
       name: "customerName",
       type: "string",
       title: "Customer Name",
@@ -28,7 +34,6 @@ export default {
       type: "string",
       title: "City",
     },
-
     {
       name: "country",
       type: "string",
