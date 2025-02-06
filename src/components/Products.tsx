@@ -20,6 +20,7 @@ const Shop = () => {
   const [filteredData, setFilteredData] = useState<Product[]>([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [categories, setCategories] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -40,8 +41,24 @@ const Shop = () => {
         setLoading(false);
       }
     };
+    const fetchCategories = async () => {
+      try {
+        const categoryQuery = `*[_type == "food"] | order(category asc) {category}`;
+        const categoryData: { category: string }[] =
+          await client.fetch(categoryQuery);
+        const uniqueCategories = [
+          ...new Set(
+            categoryData.map((item: { category: string }) => item.category)
+          ),
+        ];
+        setCategories(uniqueCategories);
+      } catch (error) {
+        console.error("Failed to fetch categories", error);
+      }
+    };
 
-    fetchData(); // Call the fetch function
+    fetchData();
+    fetchCategories();
   }, []);
 
   useEffect(() => {
@@ -153,13 +170,7 @@ const Shop = () => {
                   Category
                 </h2>
                 <div className="text-[#333333] lg:mt-5 mt-2 gap-x-2 lg:block grid grid-cols-2 sm:grid-cols-4 md:grid-cols-5 ">
-                  {[
-                    "Sandwich",
-                    "Appetizer",
-                    "Dessert",
-                    "Drink",
-                    "Main Course",
-                  ].map((category, index) => (
+                  {categories.map((category, index) => (
                     <div
                       className="flex items-center gap-2 lg:py-2 py-1"
                       key={index}
